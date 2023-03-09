@@ -4,10 +4,10 @@
     "slug": "QRMaster",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/qr-code.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/qr-code.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/qr-code.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.alexbondar03.QRMaster"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/qr-code.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7a8171ac-7b87-4cde-a605-d041494d8257"
+      }
     }
   }
 }
