@@ -5,9 +5,15 @@ type Props = {
     children: any,
     visible: Boolean,
     setVisible: Dispatch<SetStateAction<boolean>>,
+    callback?: Function,
 }
 
 const ModalView = (props: Props) => {
+    const OkButtonPress = () => {
+        props.setVisible(!props.visible);
+        props.callback?.();
+    }
+
     return (
         <Modal
             animationType='slide'
@@ -20,7 +26,7 @@ const ModalView = (props: Props) => {
                 <View style={styles.modalView}>
                     {props.children}
                     <TouchableOpacity
-                        onPress={() => props.setVisible(!props.visible)}
+                        onPress={OkButtonPress}
                         style={styles.button}>
                         <Text>Ok</Text>
                     </TouchableOpacity>
@@ -48,7 +54,7 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     button: {
-        backgroundColor: "#E7EEFE",
+        backgroundColor: '#E7EEFE',
         marginTop: 10,
         marginHorizontal: 10,
         borderRadius: 10,

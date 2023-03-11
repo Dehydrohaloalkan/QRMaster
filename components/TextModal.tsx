@@ -2,6 +2,7 @@ import { Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import React, { Dispatch, SetStateAction } from 'react'
 import ModalView from './ModalView'
 import * as Clipboard from 'expo-clipboard';
+import { useLocales } from '../hooks/useLocales';
 
 type Props = {
     visible: Boolean,
@@ -20,7 +21,7 @@ const TextModal = (props: Props) => {
             <TouchableOpacity
                 onPress={() => Clipboard.setStringAsync(props.data)}
                 style={styles.button}>
-                <Text>Copy!</Text>
+                <Text>{useLocales('copy')}</Text>
             </TouchableOpacity>
         </ModalView>
     )

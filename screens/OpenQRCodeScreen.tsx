@@ -5,6 +5,7 @@ import * as Clipboard from 'expo-clipboard';
 import { useNavigation } from '@react-navigation/native';
 import DeleteButton from '../components/DeleteButton';
 import { removeQRCode } from '../services/SQLite.service';
+import { useLocales } from '../hooks/useLocales';
 
 type Props = {
     route: any
@@ -28,7 +29,7 @@ const OpenQRCodeScreen = (props: Props) => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.border}>
-                <Text style={styles.title}>QRCode: </Text>
+                <Text style={styles.title}>{useLocales('qr_code')}</Text>
                 <QRCode
                     value={props.route.params.QRCode.description}
                     size={315}
@@ -36,13 +37,13 @@ const OpenQRCodeScreen = (props: Props) => {
                     enableLinearGradient={true}
                     getRef={(ref) => setSvgRef(ref)}
                 />
-                <Text style={styles.title}>Text: </Text>
+                <Text style={styles.title}>{useLocales('text')}</Text>
                 <Text >{props.route.params.QRCode.description}</Text>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         onPress={() => Clipboard.setStringAsync(props.route.params.QRCode.description)}
                         style={styles.button}>
-                        <Text>Copy text</Text>
+                        <Text>{useLocales('copy_text')}</Text>
                     </TouchableOpacity>
                 </View>
             </View>

@@ -6,6 +6,7 @@ import ScanCodeScreen from '../screens/ScanCodeScreen';
 import GenerateCodeScreen from '../screens/GenerateCodeScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import OpenQRCodeScreen from '../screens/OpenQRCodeScreen';
+import { useLocales } from '../hooks/useLocales';
 
 type Props = {}
 
@@ -56,28 +57,28 @@ const Navigation = (props: Props) => {
                     name="ScanCode"
                     component={ScanCodeScreen}
                     options={{
-                        title: 'Scan QR Code',
+                        title: useLocales('scan_qr'),
                     }}
                 />
                 <Stack.Screen
                     name="GenerateCode"
                     component={GenerateCodeScreen}
                     options={{
-                        title: 'Generate QR Code',
+                        title: useLocales('generate_qr'),
                     }}
                 />
                 <Stack.Screen
                     name="History"
                     component={HistoryScreen}
                     options={{
-                        title: 'History',
+                        title: useLocales('history'),
                     }}
                 />
                 <Stack.Screen
                     name="OpenQRCode"
                     component={OpenQRCodeScreen}
                     options={{
-                        title: 'History',
+                        title: useLocales('history'),
                     }}
                 />
             </Stack.Navigator>

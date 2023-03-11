@@ -8,6 +8,9 @@ import ChangeIsScanButton from '../components/ChangeIsScanButton';
 import GoToHistoryButton from '../components/GoToHistoryButton';
 import GoToGenerateButton from '../components/GoToGenerateButton';
 import { addQRCode, createTable, QRCodeType } from '../services/SQLite.service';
+import SettingsButton from '../components/SettingsButton';
+import SettingsModal from '../components/SettingsModal';
+import { useLocales } from '../hooks/useLocales';
 
 type Props = {}
 
@@ -17,6 +20,7 @@ const ScanCodeScreen = (props: Props) => {
     const [isScan, setIsScan] = useState(false);
     const [data, setData] = useState('');
     const navigation = useNavigation();
+    const [settingsVisible, setSettingsVisible] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -25,11 +29,13 @@ const ScanCodeScreen = (props: Props) => {
         })();
         navigation.setOptions({
             headerRight: () => (
-                <GoToHistoryButton onPress={() => navigation.navigate('History')} />
+               <SettingsButton onPress={() => setSettingsVisible(true)}/> 
             )
         })
         createTable();
     }, []);
+
+    let permission = useLocales('permission');
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -58,14 +64,16 @@ const ScanCodeScreen = (props: Props) => {
 
     return (
         <View style={styles.container}>
+            <GoToHistoryButton onPress={() => navigation.navigate('History')} />
             <ChangeIsScanButton isScan={isScan} setIsScan={setIsScan}></ChangeIsScanButton>
             {!hasPermission
-                ? <Text>Give Permission</Text>
+                ? <Text>{permission}</Text>
                 : isScan && <BarCodeScanner
                     style={styles.full}
                     onBarCodeScanned={onCodeScanned} />}
             <GoToGenerateButton onPress={() => navigation.navigate('GenerateCode')}/>
-            <TextModal visible={modalVisible} setVisible={setModalVisible} data={data}></TextModal>
+            <TextModal visible={modalVisible} setVisible={setModalVisible} data={data}/>
+            <SettingsModal visible={settingsVisible} setVisible={setSettingsVisible} />
         </View>
     )
 }

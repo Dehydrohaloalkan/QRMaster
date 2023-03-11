@@ -1,12 +1,17 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { Dispatch, SetStateAction } from 'react'
+import { useLocales } from '../hooks/useLocales';
 
 type Props = {
     isScan: Boolean,
     setIsScan: Dispatch<SetStateAction<boolean>>
 }
 
-const ChangeIsScanButton = (props: Props) => { 
+const ChangeIsScanButton = (props: Props) => {     
+    
+    let start = useLocales('start_scanning');
+    let stop = useLocales('stop_scanning');
+    
     return (
         <TouchableOpacity
             style={[styles.button, props.isScan ? styles.redButton : styles.greenButton]}
@@ -14,7 +19,7 @@ const ChangeIsScanButton = (props: Props) => {
             onPress={() => props.setIsScan(!props.isScan)}
         >
             <Text style={styles.text}>
-                {props.isScan ? 'Stop scanning' : 'Start scanning'}
+                {props.isScan ? stop : start}
             </Text>
         </TouchableOpacity>
     )
@@ -26,7 +31,7 @@ const styles = StyleSheet.create({
     button: {
         borderRadius: 10,
         marginHorizontal: 10,
-        marginVertical: 10,
+        marginVertical: 5,
         width: '92%',
         elevation: 1,
         height: 50,

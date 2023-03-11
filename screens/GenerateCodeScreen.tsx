@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import GenerateButton from '../components/GenerateButton'
 import CodeModal from '../components/CodeModal'
 import { QRCodeType, addQRCode } from '../services/SQLite.service';
+import { useLocales } from '../hooks/useLocales';
 
 type Props = {}
 
@@ -31,7 +32,7 @@ const GenerateCodeScreen = (props: Props) => {
         <View style={styles.container}>
             <TextInput
                 style={styles.description}
-                placeholder="ADD CONTENT..."
+                placeholder={useLocales('add_content')}
                 onChangeText={(text) => setText(text)}
                 multiline={true}
             />

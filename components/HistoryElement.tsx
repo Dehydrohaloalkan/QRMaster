@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { removeQRCode, Qrcode, QRCodeType } from '../services/SQLite.service';
 import QRCode from "react-native-qrcode-svg";
 import React from "react";
+import { useLocales } from '../hooks/useLocales';
 
 type Props = {
     item: Qrcode,
@@ -23,11 +24,11 @@ const HistoryElement = (props: Props) => {
 
     const promptToDeleteNote = () => {
         Alert.alert(
-            'Deletion',
-            'Do you want to delete this note?',
+            useLocales('deletion'),
+            useLocales('deletion_text'),
             [
-                { text: 'Yes', style: 'destructive', onPress: deleteCurrentQRCode },
-                { text: 'No', style: 'cancel' }
+                { text: useLocales('yes'), style: 'destructive', onPress: deleteCurrentQRCode },
+                { text: useLocales('no'), style: 'cancel' }
             ]);
     }
 
