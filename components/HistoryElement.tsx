@@ -22,13 +22,18 @@ const HistoryElement = (props: Props) => {
         props.onRemove?.();
     }
 
+    let deletion = useLocales('deletion');
+    let deletion_text = useLocales('deletion_text')
+    let yes = useLocales('yes')
+    let no = useLocales('no')
+
     const promptToDeleteNote = () => {
         Alert.alert(
-            useLocales('deletion'),
-            useLocales('deletion_text'),
+            deletion,
+            deletion_text,
             [
-                { text: useLocales('yes'), style: 'destructive', onPress: deleteCurrentQRCode },
-                { text: useLocales('no'), style: 'cancel' }
+                { text: yes, style: 'destructive', onPress: deleteCurrentQRCode },
+                { text: no, style: 'cancel' }
             ]);
     }
 

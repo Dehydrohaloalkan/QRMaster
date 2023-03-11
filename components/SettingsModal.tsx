@@ -11,7 +11,7 @@ type Props = {
 }
 
 const SettingsModal = (props: Props) => {
-    const [checked, setChecked] = useState<string>('en');
+    const [checked, setChecked] = useState<string>(i18n.locale);
     
     const changeLocales = () => {
         i18n.locale = checked;        
