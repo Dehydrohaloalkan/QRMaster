@@ -2,9 +2,8 @@
     "ru": {
         "id": "ru",
         "title": "Русский",
-        
-        "start_scanning" : "Начать сканирование",
-        "stop_scanning" : "Закончить сканирование",
+        "start_scanning": "Начать сканирование",
+        "stop_scanning": "Закончить сканирование",
         "scan_qr": "Сканировать QR код",
         "generate_qr": "Генерировать QR код",
         "language_settings": "Язык",

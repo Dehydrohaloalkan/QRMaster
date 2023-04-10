@@ -1,23 +1,28 @@
-import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { Icon } from 'react-native-elements'
+import {
+    GestureResponderEvent,
+    StyleSheet,
+    TouchableOpacity,
+} from 'react-native';
+import React from 'react';
+import { Icon } from 'react-native-elements';
 
 type Props = {
-    onPress: (event: GestureResponderEvent) => void,
-}
+    onPress: (event: GestureResponderEvent) => void;
+};
 
 const GoToGenerateButton = (props: Props) => {
     return (
-        <TouchableOpacity style={styles.button} activeOpacity={0.6} onPress={props.onPress}>
-            <Icon
-                name='add-outline'
-                type='ionicon'
-                color='#000' />
+        <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.6}
+            onPress={props.onPress}
+        >
+            <Icon name='add-outline' type='ionicon' color='#000' />
         </TouchableOpacity>
-    )
-}
+    );
+};
 
-export default GoToGenerateButton
+export default GoToGenerateButton;
 
 const styles = StyleSheet.create({
     button: {
@@ -31,6 +36,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#D1FEFF',
         borderRadius: 100,
         elevation: 4,
-        color: '#000'
+        color: '#000',
     },
-})
+});

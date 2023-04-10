@@ -2,9 +2,8 @@
     "en": {
         "id": "en",
         "title": "English",
-        
-        "start_scanning" : "Start scanning",
-        "stop_scanning" : "Stop scanning",
+        "start_scanning": "Start scanning",
+        "stop_scanning": "Stop scanning",
         "scan_qr": "Scan QR Code",
         "generate_qr": "Generate QR Code",
         "language_settings": "Language",
